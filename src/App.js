@@ -12,7 +12,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { FileDownload } from "@mui/icons-material";
+import MainPage from "./pages/MainPage"; 
+import { navigate } from "react-router-dom";
+
+
+
 
 function Copyright(props) {
   return (
@@ -30,6 +34,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -81,15 +86,19 @@ export default function SignIn() {
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
+            />  
+
+            <navigate to = "./pages/MainPage.js">              
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}             
+              >
               Sign In
-            </Button>
+              </Button>            
+            </navigate>
+
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
