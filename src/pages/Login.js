@@ -13,20 +13,26 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Navigate, useNavigate } from 'react-router-dom';
-import MainPage from "./MainPage";
+
 
 const theme = createTheme();
-
 
 export default function SignIn() {
   const handleSubmit = (event) => {        
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const id = data.get('id');
+    const password = data.get('password');
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      id,
+      password
     });
-    
+    const validated = UserValidation(id,password);
+    console.log({
+        validated
+    });
+    if(validated)
+        Navigate("/MainPage")
   };
   
   {/* MainPage로 보내줍니다.*/}
@@ -56,10 +62,10 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="id"
+              label="ID"
+              name="id"
+              autoComplete="id"
               autoFocus
             />
             <TextField
@@ -82,26 +88,12 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={() => {
-                 {/* MainPage로 보내줍니다.*/}
-                Navigate("/MainPage");
+              onClick={() => {               
+                
               }}
             >
               Sign In
-            </Button>
-
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
+            </Button>            
           </Box>
         </Box>        
         <Copyright sx={{ mt: 8, mb: 4 }} />
@@ -122,3 +114,16 @@ function Copyright(props) {
       </Typography>
     );
   }
+
+function UserValidation(id,password){
+    if(id == "csp" && password == "1")
+    {
+        return true;
+    }
+    else
+    {
+        alert("계정을 확인해주세요.");
+        return false;
+    }
+    
+}
