@@ -1,11 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-const NotFound = () => {
+export default function NotFound () {
     return (
         <div>
-            404 Error
+            <h1>404 Error</h1>        
+            <button>
+                <Link to = "/">Back</Link>           
+            </button>
         </div>
     );
 };
-  
-export default NotFound;

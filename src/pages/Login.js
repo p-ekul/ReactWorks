@@ -18,6 +18,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 const theme = createTheme();
 
 export default function SignIn() {
+
   const handleSubmit = (event) => {        
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -27,10 +28,10 @@ export default function SignIn() {
       id,
       password
     });
-    const validated = UserValidation(id,password);
+    const validated = UserValidation(id,password);    
     console.log({
         validated
-    });
+    });    
     if(validated)
         Navigate("/MainPage")
   };
@@ -116,7 +117,7 @@ function Copyright(props) {
   }
 
 function UserValidation(id,password){
-    if(id == "csp" && password == "1")
+    if(id.toLocaleLowerCase() == "csp" && password == "1")
     {
         return true;
     }

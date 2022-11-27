@@ -5,13 +5,14 @@ import MainPage from './pages/MainPage';
 import NotFound from './pages/NotFound';
 
 
+
 const App = () => {
 	return (
 		<div className='App'>
 			<BrowserRouter>
 				<Routes>
           {/*Starting point*/}
-        	<Route path="/" element={<LoginPage/>}></Route>
+        	<Route exact path="/" element={<LoginPage/>}></Route>
 
           <Route path="/MainPage" element={<MainPage/>}></Route>          
 
